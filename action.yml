@@ -6,12 +6,12 @@ branding:
   icon: upload-cloud
 inputs:
   AWS_ACCESS_KEY_ID:
-    description: AWS ACCESS KEY
-    required: true
+    description: Deprecated. Credentials are read from the environment, set AWS_ACCESS_KEY_ID under `env:` instead
+    required: false
 
   AWS_SECRET_ACCESS_KEY:
-    description: AWS SECRET KEY
-    required: true
+    description: Deprecated. Credentials are read from the environment, set AWS_SECRET_ACCESS_KEY under `env:` instead
+    required: false
 
   AWS_REGION:
     description: AWS REGION
@@ -34,8 +34,12 @@ inputs:
     description: If defined the s3 sync is executed with the --delete flag
     required: false
 
-  WITH_CLOUD_FRONT_INVALIDATION:
+  WITH_CLOUDFRONT_INVALIDATION:
     description: If defined a cloudfront invalidation will be executed
+    required: false
+
+  WITH_CLOUD_FRONT_INVALIDATION:
+    description: Deprecated alias of WITH_CLOUDFRONT_INVALIDATION
     required: false
 
   AWS_CLOUDFRONT_DISTRIBUTION_ID:
@@ -47,5 +51,5 @@ inputs:
     required: false
 
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
